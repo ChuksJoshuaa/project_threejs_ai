@@ -10,12 +10,18 @@ export const downloadCanvasToImage = () => {
   document.body.removeChild(link);
 };
 
-export const reader = (file) =>
-  new Promise((resolve, reject) => {
+export const reader = (file) => {
+  return new Promise((resolve, reject) => {
+    if (!file || !(file instanceof Blob)) {
+      reject(new TypeError("The provided value is not a Blob or File."));
+      return;
+    }
     const fileReader = new FileReader();
     fileReader.onload = () => resolve(fileReader.result);
+    fileReader.onerror = (error) => reject(error);
     fileReader.readAsDataURL(file);
   });
+};
 
 export const getContrastingColor = (color) => {
   // Remove the '#' character if it exists

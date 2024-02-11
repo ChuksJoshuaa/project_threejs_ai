@@ -1,4 +1,3 @@
-import React from 'react'
 import { easing } from 'maath';
 import { useSnapshot } from 'valtio';
 import { useFrame } from '@react-three/fiber';
@@ -41,7 +40,7 @@ const Shirt = () => {
             rotation={[0, 0, 0]}
             scale={0.15}
             map={logoTexture}
-            map-anisotropy={16}
+            mapAnisotropy={16}
             depthTest={false}
             depthWrite={true}
           />
